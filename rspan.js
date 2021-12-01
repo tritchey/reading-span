@@ -917,12 +917,11 @@ var final_rspan7_run = {
 
 var final_combined_runs = {
 	timeline: jsPsych.randomization.repeat([
-		final_rspan3_run
-		// , final_rspan3_run, final_rspan3_run,
-		// final_rspan4_run, final_rspan4_run, final_rspan4_run,
-		// final_rspan5_run, final_rspan5_run, final_rspan5_run,
-		// final_rspan6_run, final_rspan6_run, final_rspan6_run,
-		// final_rspan7_run, final_rspan7_run, final_rspan7_run
+		final_rspan3_run, final_rspan3_run, final_rspan3_run,
+		final_rspan4_run, final_rspan4_run, final_rspan4_run,
+		final_rspan5_run, final_rspan5_run, final_rspan5_run,
+		final_rspan6_run, final_rspan6_run, final_rspan6_run,
+		final_rspan7_run, final_rspan7_run, final_rspan7_run
 		], 1)
 }
 
@@ -965,6 +964,5 @@ var rspan_summary = {
 
 //main rspan task
 var rspan_final = {
-	//letter_practice_final, sentence_practice_final, lettersentence_practice_final,
-	timeline: [lettersentence_practice_final, final_combined_runs, rspan_done, rspan_summary]
+	timeline: [letter_practice_final, sentence_practice_final, lettersentence_practice_final, final_combined_runs, rspan_done, rspan_summary]
 };
