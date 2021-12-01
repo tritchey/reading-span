@@ -966,5 +966,5 @@ var rspan_summary = {
 //main rspan task
 var rspan_final = {
 	//letter_practice_final, sentence_practice_final, lettersentence_practice_final,
-	timeline: [ final_combined_runs, rspan_done, rspan_summary]
+	timeline: [lettersentence_practice_final, final_combined_runs, rspan_done, rspan_summary]
 };
