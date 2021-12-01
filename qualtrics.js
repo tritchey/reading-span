@@ -14,6 +14,8 @@ Qualtrics.SurveyEngine.addOnload(function () {
 	
 	// requiredResources must include all the JS files that demo-simple-rt-task-transformed.html uses.
 	var requiredResources = [
+		"https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js",
+		task_github + "jspsych-6.0.2/jspsych.js",
 		task_github + "jspsych-6.0.2/plugins/jspsych-audio-keyboard-response.js",
 		task_github + "jspsych-6.0.2/plugins/jspsych-audio-button-response.js",
 		task_github + "jspsych-6.0.2/plugins/jspsych-html-keyboard-response.js",
@@ -56,11 +58,23 @@ Qualtrics.SurveyEngine.addOnload(function () {
 			display_element: 'display_stage',
 	
 			/* Change 5: Adding the clean up and continue functions.*/
-			on_finish: function (data) {
+			on_finish: function (data) {	
+				var finalSentenceACC = Math.round(arrAvg(sentenceACC)*100); //sentence accuracy
+				var sentenceCutoff = Math.round(arrAvg(calibRT));
+				var summaryData = {
+					designation: 'SUMMARY',
+					RSPAN_TOTAL: RSPAN_TOTAL,
+					RSPAN_ABS: RSPAN_ABS,
+					SENT_ACC: finalSentenceACC,
+					SENT_RT: sentenceCutoff
+				};
+				jsPsych.data.addDataToLastTrial(summaryData);
+				Qualtrics.SurveyEngine.setEmbeddedData("RSPAN_ABS", RSPAN_ABS);
+
 				// clear the stage
 				jQuery('display_stage').remove();
 				jQuery('display_stage_background').remove();
-	
+
 				// simulate click on Qualtrics "next" button, making use of the Qualtrics JS API
 				qthis.clickNextButton();
 			}
